@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: resourceserver
+  threads:
+    virtual:
+      enabled: true
+  security:
+    oauth2:
+      #resourceserver:
+      #  jwt:
+      #    issuer-uri: ${auth.server.uri}
+      client:
+        provider:
+          platform-auth-server:
+            issuer-uri: ${auth.server.uri}
+        registration:
+          resource-server-client:
+            provider: platform-auth-server
+            client-id: resource-server-client
+            client-secret: "secret"
+            authorization-grant-type: client_credentials
+            scope:
+              - openid
+              - profile
+              - email

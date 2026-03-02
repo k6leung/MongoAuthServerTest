@@ -1,0 +1,54 @@
+server:
+  port: 9000
+  #addresss: 127.0.0.1
+  forward-headers-strategy: NATIVE
+
+logging:
+  level:
+    root: DEBUG
+    org:
+      springframework:
+        security:
+          oauth2:
+            server:
+              authorization: TRACE
+    org.springframework.data.mongodb.repository.query: DEBUG
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: mongodbauthserver
+  mongodb:
+    uri: mongodb://${mongodb.user}:${mongodb.password}@${mongodb.hostport}?replicaSet=${mongodb.replicaset}&authSource=${mongodb.authdb}&w=2&wtimeoutMS=5000&readPreference=secondaryPreferred&maxStalenessSeconds=90
+    database: ${mongodb.authdb}
+  session:
+    redis:
+      namespace: "spring:session:authorizationserver"
+
+mongock:
+  transactional: true
+  migration-scan-package:
+    - org.example.mongodbtest.mongock.migration
+
+# copy from application-test.yml for quick launch, should use ENV instead
+mongodb:
+  authdb: app
+  hostport: mongo1:27017,mongo2:27018,mongo3:27019
+  password: P3qUejzbMw
+  replicaset: myReplicaSet
+  user: appUser
+
+mongo:
+  connection:
+    string: mongodb://appUser:P3qUejzbMw@mongo1:27017,mongo2:27018,mongo3:27019?replicaSet=myReplicaSet&authSource=app&w=2&wtimeoutMS=5000&readPreference=secondaryPreferred&maxStalenessSeconds=90
+
+keystore:
+  alias: jwt
+  password: changeit
+  path: jwttest2.pkcs12
+
+valkey:
+  host: 127.0.0.1
+  port: 6379

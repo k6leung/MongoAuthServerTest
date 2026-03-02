@@ -1,0 +1,15 @@
+auth:
+  server:
+    uri: "http://localhost:9000"
+
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: "http://localhost:9000"
+jwt:
+  issuer:
+    uri:
+      - http://localhost:9000
+      - http://localhost:9001

@@ -1,0 +1,51 @@
+{
+  "@class": "java.util.Collections$UnmodifiableMap",
+  "org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat": "self-contained",
+  "metadata.token.claims": {
+    "@class": "java.util.Collections$UnmodifiableMap",
+    "sub": "ken",
+    "aud": [
+      "java.util.Collections$SingletonList",
+      [
+        "app-client2"
+      ]
+    ],
+    "nbf": [
+      "java.time.Instant",
+      1767522332.954976293
+    ],
+    "scope": [
+      "java.util.Collections$UnmodifiableSet",
+      [
+        "openid",
+        "profile",
+        "email"
+      ]
+    ],
+    "roles": [
+      "java.util.Collections$UnmodifiableSet",
+      [
+        "data:create",
+        "ROLE_USER",
+        "data:delete",
+        "ROLE_ADMIN",
+        "data:read",
+        "data:update"
+      ]
+    ],
+    "iss": [
+      "java.net.URL",
+      "http://host.docker.internal:9001"
+    ],
+    "exp": [
+      "java.time.Instant",
+      1767522632.954976293
+    ],
+    "iat": [
+      "java.time.Instant",
+      1767522332.954976293
+    ],
+    "jti": "2b66f8a5-a660-4b38-a0c8-52e47e2b298d"
+  },
+  "metadata.token.invalidated": false
+}

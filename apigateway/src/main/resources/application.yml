@@ -1,0 +1,92 @@
+server:
+  port: 8080
+  #reactive:
+  #  session:
+  #    cookie:
+  #      name: JSESSIONID
+
+logging:
+  level:
+    root: DEBUG
+
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          trusted-proxies: "10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|192\\.168\\.\\d{1,3}\\.\\d{1,3}|169\\.254\\.\\d{1,3}\\.\\d{1,3}|127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|100\\.6[4-9]{1}\\.\\d{1,3}\\.\\d{1,3}|100\\.[7-9]{1}\\d{1}\\.\\d{1,3}\\.\\d{1,3}|100\\.1[0-1]{1}\\d{1}\\.\\d{1,3}\\.\\d{1,3}|100\\.12[0-7]{1}\\.\\d{1,3}\\.\\d{1,3}|172\\.1[6-9]{1}\\.\\d{1,3}\\.\\d{1,3}|172\\.2[0-9]{1}\\.\\d{1,3}\\.\\d{1,3}|172\\.3[0-1]{1}\\.\\d{1,3}\\.\\d{1,3}|0:0:0:0:0:0:0:1|::1|fe[89ab]\\p{XDigit}:.*|f[cd]\\p{XDigit}{2}:.*+"
+          forwarded:
+            by:
+              enabled: true
+          routes:
+            - id: book-service
+              uri: ${resource.server.uri}
+              predicates:
+              - Path=/books/**
+              filters:
+              - TokenRelay
+            - id: proxy-book-service
+              uri: ${resource.server.uri}
+              predicates:
+              - Path=/proxyBooks/**
+              filters:
+              - RewritePath=/proxyBooks,/books
+              #- RemoveRequestHeader=Cookie
+            # added to try keep authorization server behind gateway
+            - id: auth-server
+              uri: ${auth.server.uri}
+              predicates:
+              - Path=/auth/**
+              filters:
+              - RewritePath=/auth/,/
+            - id: auth-server-login
+              uri: ${auth.server.uri}
+              predicates:
+              - Path=/login
+              - Method=POST
+              filters:
+              - SetPath=/login
+            #added to try keep authorization server behind gateway ends
+      #  webmvc:
+      #    routes:
+      #      - id: book-service
+      #        uri: ${resource.server.uri}
+      #        predicates:
+      #        - Path=/books/**
+      #        filters:
+      #          - TokenRelay
+  security:
+    oauth2:
+      client:
+        provider:
+          platform-auth-server:
+            issuer-uri: ${auth.server.uri}
+            jwk-set-uri: ${auth.server.uri}/oauth2/jwks
+        registration:
+          app-client:
+            provider: platform-auth-server
+            client-id: app-client
+            client-secret: "secret"
+            client-authentication-method: client_secret_basic
+            redirect-uri: ${api.gateway.uri}/login/oauth2/code/app-client
+            #redirect-uri: ${auth.server.uri}/login/oauth2/code/app-client
+            authorization-grant-type:
+              - authorization_code
+              - refresh_token
+            scope:
+              - openid
+              - profile
+              - email
+
+# copied from application-test.yml for quick launch testing, should use ENV instead
+auth:
+  server:
+    uri: "http://localhost:9000"
+api:
+  gateway:
+    uri: "http://localhost:8080"
+resource:
+  server:
+    uri: "http://localhost:8081"

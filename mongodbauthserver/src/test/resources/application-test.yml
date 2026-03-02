@@ -1,0 +1,19 @@
+mongodb:
+  authdb: app
+  hostport: mongo1:27017,mongo2:27018,mongo3:27019
+  password: P3qUejzbMw
+  replicaset: myReplicaSet
+  user: appUser
+
+mongo:
+  connection:
+    string: mongodb://appUser:P3qUejzbMw@mongo1:27017,mongo2:27018,mongo3:27019?replicaSet=myReplicaSet&authSource=app&w=2&wtimeoutMS=5000&readPreference=secondaryPreferred&maxStalenessSeconds=90
+
+keystore:
+  alias: jwt
+  password: changeit
+  path: jwttest2.pkcs12
+
+valkey:
+  host: 127.0.0.1
+  port: 6379

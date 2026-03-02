@@ -1,0 +1,17 @@
+auth:
+  server:
+    uri: "http://localhost:9000"
+api:
+  gateway:
+    uri: "http://localhost:8080"
+resource:
+  server:
+    uri: "http://localhost:8081"
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          platform-auth-server:
+            jwk-set-uri: ${auth.server.uri}/oauth2/jwks

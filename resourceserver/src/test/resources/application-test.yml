@@ -1,0 +1,16 @@
+auth:
+  server:
+    uri: "http://localhost:9000"
+api:
+  gateway:
+    uri: "http://localhost:8080"
+simple:
+  resource:
+    uri: "http://localhost:8090"
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9000"

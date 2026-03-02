@@ -1,0 +1,15 @@
+{
+  "id": "4ce04e74-fbd4-4a10-b2d6-d0aa91c66504",
+  "clientId": "app-client2",
+  "clientIdIssuedAt": "2026-01-04T10:25:33+08:00",
+  "clientSecret": "$2a$10$nKEuOBnSzug2zGuy6x1AfuQmSwsXEOsDPD.2VyNy2XJ37TdFPqqrq",
+  "clientSecretExpiresAt": null,
+  "clientName": "4ce04e74-fbd4-4a10-b2d6-d0aa91c66504",
+  "clientAuthenticationMethods": ["client_secret_basic"],
+  "authorizationGrantTypes": ["refresh_token","authorization_code"],
+  "redirectUris": ["http://localhost:9080/login/oauth2/code/app-client2"],
+  "postLogoutRedirectUris": ["http://localhost:9080/logout"],
+  "scopes": ["openid","profile","email"],
+  "clientSettingJson": "{\"@class\":\"java.util.Collections$UnmodifiableMap\",\"settings.client.require-proof-key\":false,\"settings.client.require-authorization-consent\":false}",
+  "tokenSettingJson": "{\"@class\":\"java.util.Collections$UnmodifiableMap\",\"settings.token.reuse-refresh-tokens\":true,\"settings.token.x509-certificate-bound-access-tokens\":false,\"settings.token.id-token-signature-algorithm\":[\"org.springframework.security.oauth2.jose.jws.SignatureAlgorithm\",\"RS256\"],\"settings.token.access-token-time-to-live\":[\"java.time.Duration\",60.000000000],\"settings.token.access-token-format\":{\"@class\":\"org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat\",\"value\":\"self-contained\"},\"settings.token.refresh-token-time-to-live\":[\"java.time.Duration\",3600.000000000],\"settings.token.authorization-code-time-to-live\":[\"java.time.Duration\",60.000000000],\"settings.token.device-code-time-to-live\":[\"java.time.Duration\",60.000000000]}"
+}

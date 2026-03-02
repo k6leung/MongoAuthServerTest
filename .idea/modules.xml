@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MongoAuthServerTest.iml" filepath="$PROJECT_DIR$/MongoAuthServerTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infradocker/infradocker.iml" filepath="$PROJECT_DIR$/infradocker/infradocker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/postman/postman.iml" filepath="$PROJECT_DIR$/postman/postman.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourceserver/resourceserver.iml" filepath="$PROJECT_DIR$/resourceserver/resourceserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simplewebresource/simplewebresource.iml" filepath="$PROJECT_DIR$/simplewebresource/simplewebresource.iml" />
+    </modules>
+  </component>
+</project>

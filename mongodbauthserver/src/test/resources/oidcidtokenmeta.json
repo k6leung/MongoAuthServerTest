@@ -1,0 +1,34 @@
+{
+  "@class": "java.util.Collections$UnmodifiableMap",
+  "metadata.token.claims": {
+    "@class": "java.util.Collections$UnmodifiableMap",
+    "sub": "ken",
+    "aud": [
+      "java.util.Collections$SingletonList",
+      [
+        "app-client2"
+      ]
+    ],
+    "azp": "app-client2",
+    "auth_time": [
+      "java.util.Date",
+      1767522332803
+    ],
+    "iss": [
+      "java.net.URL",
+      "http://host.docker.internal:9001"
+    ],
+    "exp": [
+      "java.time.Instant",
+      1767524132.962132933
+    ],
+    "iat": [
+      "java.time.Instant",
+      1767522332.962132933
+    ],
+    "nonce": "j330EEUwWOrhqSrLVZgGKyszis4sLL6o7mhH5L2MA7Y",
+    "jti": "43877f8b-c1dc-412e-954c-25d88785ad36",
+    "sid": "6zSSeODmhdzS-8ZZFiEKYBN1YDMgv743Cl6mjinI8RE"
+  },
+  "metadata.token.invalidated": false
+}
