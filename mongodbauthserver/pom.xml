@@ -154,9 +154,13 @@
                 <configuration>
                     <image>
                         <env>
+                            <!-- this is for normal (not native) docker image -->
                             <BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
                             <BPE_APPEND_JAVA_TOOL_OPTIONS>--add-opens=java.base/java.time=ALL-UNNAMED</BPE_APPEND_JAVA_TOOL_OPTIONS>
+                            <!-- this is for normal (not native) docker image ends -->
+                            <!-- this is for native image -->
                             <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>--add-opens=java.base/java.time=ALL-UNNAMED</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+                            <!-- this is for native image ends -->
                         </env>
                     </image>
                     <excludes>
